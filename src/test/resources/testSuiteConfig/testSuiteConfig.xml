@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Test Suite">
+    <listeners>
+        <listener class-name="listeners.AllureReportListener"/>
+    </listeners>
+   <!-- <test name="Onboarding Test">
+        <classes>
+            <class name="tests.Sprint_1.Onboarding_Test"/>
+        </classes>
+    </test>
+    <test name="Selling Channel : Ravelry">
+        <classes>
+            <class name="tests.Sprint_1.Selling_Channel_Ravelry"/>
+        </classes>
+    </test>-->
+
+    <test name="Manage Product : Create Products">
+        <classes>
+            <class name="tests.Sprint_2.MP_Create_Product_Test"/>
+        </classes>
+    </test>
+
+</suite>
