@@ -75,6 +75,11 @@ public class DriverUtils {
         }
     }
 
+    public void hoverByAction(WebElement element) {
+        Actions action = new Actions(driver);
+        action.moveToElement(element).build().perform();
+    }
+
     public boolean iselementVisible(WebElement element, int timeout) {
         try {
             return new WebDriverWait(driver, Duration.ofSeconds(timeout))

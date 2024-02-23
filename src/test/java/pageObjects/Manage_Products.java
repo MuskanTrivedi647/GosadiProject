@@ -4,7 +4,6 @@ import logger.LOG;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v85.log.Log;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -430,10 +429,10 @@ public class Manage_Products extends BasePage {
     @FindBy(xpath = "//*[contains(text(),\"Files\")]")
     private WebElement files_h5;
 
-    @FindBy(xpath = "//h5[text()='Descriptive Text']")
+    @FindBy(xpath = "//*[text()='Descriptive Text']")
     private WebElement descriptiveText_h5;
 
-    @FindBy(name = "textarea")
+    @FindBy(xpath = "//div[@class='ql-editor ql-blank']")
     private WebElement descriptiveText_textarea;
 
     @FindBy(xpath = "//Input[contains(@aria-activedescendant,'option')]")
@@ -746,6 +745,59 @@ public class Manage_Products extends BasePage {
     @FindBy(xpath = "(//*[contains(text(),'Aliases ?')])[1]")
     private WebElement isAliasesMandatory;
 
+// 9 feb
+    @FindBy(xpath = "//div[text()='Yarn added successfully']")
+    private WebElement yarnSuccessMessage;
+
+    @FindBy(xpath = "//button[@class=\"close-icon-btn\"]")
+    private WebElement crossIconButton;
+
+    @FindBy(xpath = "//*[contains(text(),'Choose the photos that you want to show')]")
+    private WebElement photosText;
+
+    @FindBy(xpath = "(//input[contains(@class,'PrivateSwitchBase-input') and @type='checkbox']/..)[1]")
+    private WebElement getRemovePhotosCheckbox;
+
+    @FindBy(xpath = "//div[@class=\"img-cover\"]")
+    private List<WebElement> removedPhotoCard;
+
+    @FindBy(xpath = "(//button[contains(text(),'Add Photo From')])[2]")
+    private WebElement addPhotoBtn;
+
+    @FindBy(xpath = "//*[contains(text(),'Add Photo from Gallery')]")
+    private WebElement addPhotoHeaderText;
+
+    @FindBy(xpath = "(//*[contains(text(),'Texture')])[1]")
+    private WebElement textureFieldMandatory;
+
+    @FindBy(xpath = "(//*[contains(text(),'Weight (grams)')])[1]")
+    private WebElement weightFieldMandatory;
+
+    // 19 feb
+
+    @FindBy(xpath = "//*[contains(text(),'A yarn with this company already exists')]")
+    private WebElement sameYarnNameError;
+
+    @FindBy(xpath = "//*[@name=\"CompanyName\"]/following-sibling::div/button[@title=\"Clear\"]")
+    private WebElement clearIcon;
+
+    //  A dependent
+    @FindBy(xpath = "//p[text()='Add Yarn']/..")
+    private WebElement addYarnButon;
+
+    @FindBy(xpath = "//input[@name='yarnForm.0.yarn']")
+    private WebElement primaryYarnInput;
+
+    @FindBy(xpath = "(//div[@class='two-line-label'])[1]")
+    private WebElement bothYarnCard;
+
+    // m
+
+    @FindBy(xpath = "(//input[@name=\"requiredYarn\"]/../div)[1]")
+    private WebElement aboveYarnFieldValue;
+
+    @FindBy(xpath = "//input[@name='yarnForm.1.yarn']")
+    private WebElement primaryYarnInput1;
 
 
 
@@ -823,7 +875,7 @@ public class Manage_Products extends BasePage {
     @FindBy(xpath = "//p[contains(text(),'WPI is required')]")
     private WebElement wpiRequired;
 
-    @FindBy(xpath = "//input[@name='WPIType2']")
+    @FindBy(xpath = "//input[@name='WPIType2']/..")
     private WebElement wpiUnit;
 
     //P End
@@ -1619,9 +1671,10 @@ public class Manage_Products extends BasePage {
 
     public Manage_Products verifyDescriptiveTextTabVisible() {
         String fileTabTitle = getText(descriptiveText_h5);
-        Assert.assertEquals(fileTabTitle, "Descriptive Text");
+        LOG.Reporter(fileTabTitle);
+        Assert.assertEquals(fileTabTitle, "DESCRIPTIVE TEXT");
         LOG.Reporter("Descriptive Text Tab is displayed");
-        sendKeys(descriptiveText_textarea, "Product details text area");
+        sendKeysWithActions(descriptiveText_textarea, "Product details text area");
         LOG.Reporter("Descriptive Text Text Area is displayed");
         return this;
     }
@@ -2578,7 +2631,7 @@ public Manage_Products verifyHookRangeFieldAccessibility(){
 
     public void getHookSizeDropDownList(List<WebElement> element){
         for (int i = 0; i < element.size(); i++) {
-            if (i == 2) {
+            if (i == 1) {
                 clickByAction(element.get(i));
             }
         }
@@ -2872,9 +2925,250 @@ public Manage_Products verifyHookRangeFieldAccessibility(){
         verifyYarnName();
         verifyBrandNameSelection();
         verifyYarnWeightOptionPopulated();
+        holdForElement(2);
+        clickOnWebElement(wpiUnit);
+        LOG.Reporter("Clicking on Wpi unit");
+        clickOnWebElement(wrapsPerInchValue);
+        LOG.Reporter("Clicking on Wpi unit value" + getText(wrapsPerInchValue));
+        verifyToAddDataInLengthField();
+        verifySelectUnitFieldFromDD();
+        clickOnWebElement(submitButton);
+        LOG.Reporter("Submit button is accessible ");
+        holdForElement(2);
+        Assert.assertTrue(iselementVisible(yarnSuccessMessage));
+        LOG.Reporter("Yarn created successfully");
+        return this;
+    }
+    
+    public Manage_Products crossIconAccessibility(){
+        verifyYarnName();
+        verifyBrandNameSelection();
+        verifyYarnWeightOptionPopulated();
+        holdForElement(2);
+        clickOnWebElement(wpiUnit);
+        LOG.Reporter("Clicking on Wpi unit");
+        clickOnWebElement(wrapsPerInchValue);
+        LOG.Reporter("Clicking on Wpi unit value" + getText(wrapsPerInchValue));
+        verifyToAddDataInLengthField();
+        verifySelectUnitFieldFromDD();
+        Assert.assertTrue(iselementVisible(crossIconButton));
+        LOG.Reporter("Pop up is open");
+        clickOnWebElement(crossIconButton);
+        LOG.Reporter("Clicked on cross icon button");
+        holdForElement(2);
+        Assert.assertFalse(iselementVisible(crossIconButton, second10TimeOut));
+        LOG.Reporter("Pop up is closed");
 
         return this;
     }
+
+    public Manage_Products verifyRavelryPhotosUIAndText(){
+        String text = getText(photosText);
+        Assert.assertTrue(iselementVisible(photosText));
+        LOG.Reporter("Photos text is visible ::"+ text);
+        Assert.assertTrue(iselementVisible(removePhotosButtonEtsy));
+        Assert.assertFalse(iselementEnable(removePhotosButtonEtsy,2));
+        LOG.Reporter("Remove photos Button is visible & inactive by default ");
+        Assert.assertTrue(iselementVisible(addPhotoFrom_Button));
+        Assert.assertTrue(iselementEnable(addPhotoFrom_Button,2));
+        LOG.Reporter("Add photos Button is visible & active by default ");
+        Assert.assertTrue(iselementVisible(fileCheckbox));
+        LOG.Reporter("Checkbox on the right hand side of the card is displayed ");
+        return this;
+    }
+
+    public Manage_Products verifyUserCanRemovePhotos(){
+        clickOnWebElement(getRemovePhotosCheckbox);
+        LOG.Reporter("Clicked on checkbox");
+        iselementVisible(removePhotosButtonEtsy, second10TimeOut);
+        clickByAction(removePhotosButtonEtsy);
+        LOG.Reporter("Clicked on remove photo button ");
+        Assert.assertFalse(iselementVisible(photoContent));
+        LOG.Reporter("Photo is removed ");
+        Assert.assertTrue(iselementVisible(addPhotoFrom_Button));
+        clickOnWebElement(addPhotoFrom_Button);
+        LOG.Reporter("Clicked on add photo button ");
+        holdForElement(2);
+        for (WebElement removedPhotoCard : removedPhotoCard) {
+            boolean removedPhotoCardVisible = iselementVisible(removedPhotoCard);
+            Assert.assertTrue(removedPhotoCardVisible, "Removed photo card is not visible when adding new photos");
+        }
+        LOG.Reporter("All removed photos are accessible from Add Photos button");
+        return this;
+    }
+
+    public Manage_Products verifyUserCanAccessAddPhotosPopup(){
+        verifyUserCanRemovePhotos();
+        holdForElement(2);
+        Assert.assertEquals(getText(addPhotoHeaderText),"Add Photo from Gallery");
+        LOG.Reporter("Pop up header displayed text ::" +getText(addPhotoHeaderText));
+        Assert.assertFalse(removedPhotoCard.isEmpty(), "No image cards found in the popup");
+        Assert.assertTrue(iselementVisible(fileCheckbox));
+        LOG.Reporter("Image card with checkbox on top left is displayed ");
+        Assert.assertTrue(iselementVisible(crossIconButton), "Cross button is not displayed");
+        LOG.Reporter("Cross button is displayed ");
+        Assert.assertTrue(iselementVisible(addPhotoBtn), "Add Photos button is not displayed");
+        LOG.Reporter("Add Photos button is displayed ");
+        return this;
+    }
+
+        public Manage_Products addMultiplePhotos(String photoFilePaths , String photoFilePath) {
+                choosePhoto_input.sendKeys(filePath(photoFilePaths));
+            choosePhoto_input.sendKeys(filePath(photoFilePath));
+
+            LOG.Reporter("Photo '" + photoFilePath + "' is uploaded");
+
+        return this;
+    }
+
+
+    // method for photo sequence
+    public Manage_Products verifyAddedPhotosSequence(){
+
+        return this;
+    }
+
+    public Manage_Products verifyIsTextureFieldNonMandatory(){
+        isFieldNonMandatory(textureFieldMandatory);
+        return this;
+    }
+
+    public Manage_Products verifyIsWeightFieldNonMandatory(){
+        isFieldNonMandatory(weightFieldMandatory);
+        return this;
+    }
+    
+    // 19 feb
+
+    public Manage_Products verifySameYarnName(){
+        Assert.assertTrue(iselementVisible(yarnName));
+        sendKeys(yarnName, "test");
+        LOG.Reporter("Entered yarn name in text field");
+        verifyBrandNameSelection();
+        verifyYarnWeightOptionPopulated();
+        holdForElement(2);
+        clickOnWebElement(wpiUnit);
+        LOG.Reporter("Clicking on Wpi unit");
+        clickOnWebElement(wrapsPerInchValue);
+        LOG.Reporter("Clicking on Wpi unit value" + getText(wrapsPerInchValue));
+        verifyToAddDataInLengthField();
+        verifySelectUnitFieldFromDD();
+        clickOnWebElement(submitButton);
+        LOG.Reporter("Clicked on Submit button ");
+        holdForElement(2);
+        Assert.assertTrue(iselementVisible(sameYarnNameError));
+        LOG.Reporter("Error Message :: "+getText(sameYarnNameError));
+        return this;
+    }
+
+    public Manage_Products verifyCrossIconAppearsAndAccessibility(){
+        verifyBrandNameSelection();
+        hoverByAction(yarnBrand);
+        Assert.assertTrue(iselementVisible(clearIcon));
+        LOG.Reporter("Cross icon is appearing after entering data ");
+        clickOnWebElement(clearIcon);
+        LOG.Reporter("Clicked on clear icon ");
+        Assert.assertTrue(getAttributeValue(yarnBrand).isEmpty());
+        LOG.Reporter("Added data is removed");
+        Assert.assertFalse(iselementVisible(yarnBrandGreenTick),"Before entering data green tick is appearing ");
+        LOG.Reporter("Green Tick is replaced by required ");
+        return this;
+    }
+
+    public Manage_Products againAddYarnOptions(){
+        clickOnWebElement(addYarnButon);
+        LOG.Reporter("Clicked on Add Yarn Button");
+        sendKeys(primaryYarnInput, "abc" + Keys.ARROW_DOWN + Keys.ENTER);
+        clickOnWebElement(yarnDDOptions);
+        LOG.Reporter("Clicked on Yarn Dropdown Options");
+        Assert.assertTrue(iselementVisible(primaryYarnWeightLabel, second10TimeOut));
+        LOG.Reporter("Verify Primary Yarn Weight Label :: " + primaryYarnWeightLabel.getText());
+        Assert.assertTrue(iselementVisible(bothYarnCard,second10TimeOut));
+        LOG.Reporter("Verify Both Yarn Card is displayed :: "+bothYarnCard.getText());
+        return this;
+    }
+
+    public Manage_Products verifyUpdateYarn(){
+        LOG.Reporter("Value " +getText(aboveYarnFieldValue));
+        Assert.assertTrue(getText(aboveYarnFieldValue).isEmpty());
+        return this;
+    }
+
+    public Manage_Products verifyBothKeywordsInPatternLabel(){
+        String patternRequirementLabelText = getText(bothYarnCard);
+        boolean containsBothKeyword = patternRequirementLabelText.toLowerCase().contains("both");
+        Assert.assertTrue(containsBothKeyword);
+        LOG.Reporter("Pattern label contains the both keyword ");
+        return this;
+    }
+
+    public Manage_Products againAddAnotherYarnOptions(){
+        clickOnWebElement(addYarnButon);
+        LOG.Reporter("Clicked on Add Yarn Button");
+        sendKeys(primaryYarnInput1, "abc" + Keys.ARROW_DOWN + Keys.ENTER);
+        clickOnWebElement(yarnDDOptions);
+        LOG.Reporter("Clicked on Yarn Dropdown Options");
+        Assert.assertTrue(iselementVisible(primaryYarnWeightLabel, second10TimeOut));
+        LOG.Reporter("Verify Primary Yarn Weight Label :: " + primaryYarnWeightLabel.getText());
+        Assert.assertTrue(iselementVisible(bothYarnCard,second10TimeOut));
+        LOG.Reporter("Verify Both Yarn Card is displayed :: "+bothYarnCard.getText());
+        return this;
+    }
+
+    public int extractYarnCountFromLabel(String labelText){
+        String[] words = labelText.split("\\s+");
+        int count = 0;
+        for (String word : words) {
+            if (word.matches("\\d+")) {
+                count = Integer.parseInt(word);
+                break;
+            }
+        }
+        return count;
+    }
+
+    public Manage_Products testToVerifyDynamicYarnCount(){
+        String patternRequirementLabelText = getText(bothYarnCard);
+        int actualYarnCount = extractYarnCountFromLabel(patternRequirementLabelText);
+        Assert.assertEquals(  actualYarnCount,3,"Count in the pattern requirement label does not match the expected yarn count");
+        LOG.Reporter("Does the pattern require all 3 yarns is dynamic :: "+actualYarnCount);
+        return this;
+    }
+
+    public Manage_Products verifyPatternFieldAccessibility(){
+        Assert.assertTrue(iselementVisible(aboveYarnFieldValue));
+        LOG.Reporter("Pattern Field is accessible ");
+        clickOnWebElement(aboveYarnFieldValue);
+        LOG.Reporter("Click on pattern Field ");
+        Assert.assertTrue(iselementVisible(hookRangeDropDown));
+        LOG.Reporter("Pattern Range Dropdown is populated ");
+        return this;
+    }
+
+    public Manage_Products verifyPatternDropdownSelection() {
+        clickOnWebElement(aboveYarnFieldValue);
+        LOG.Reporter("Clicked on Pattern Dropdown Field ");
+        getHookSizeDropDownList(hookRangeDropDownOption);
+        LOG.Reporter("Pattern Value Selected :: " +getText(aboveYarnFieldValue));
+        Assert.assertFalse(getText(aboveYarnFieldValue).isEmpty());
+        return this;
+    }
+
+    public Manage_Products verifyMultiplePatternOptionsSelection(){
+        clickOnWebElement(aboveYarnFieldValue);
+        LOG.Reporter("Clicked on pattern Dropdown Field ");
+        getHookSizeDropDownList(hookRangeDropDownOption);
+        LOG.Reporter("Pattern Value Selected Option :: " +getText(aboveYarnFieldValue));
+        holdForElement(2);
+        Assert.assertFalse(iselementVisible(hookRangeDropDown),"Pattern dropdown is visible");
+        LOG.Reporter("Pattern Dropdown is not visible");
+        return this;
+    }
+
+
+
+
+
 
     //M Ended
 
@@ -2942,7 +3236,7 @@ public Manage_Products verifyHookRangeFieldAccessibility(){
         clickOnWebElement(yarnWeightOption);
         LOG.Reporter("Selected yarn weight value ");
         LOG.Reporter(getText(yarnWeightSelected));
-        Assert.assertEquals("Bulky", getText(yarnWeightSelected));
+        Assert.assertEquals(getText(yarnWeightSelected),"Super Bulky");
         LOG.Reporter("Yarn weight is selected");
         return this;
     }
@@ -3029,7 +3323,7 @@ public Manage_Products verifyHookRangeFieldAccessibility(){
     // R Started
     public Manage_Products verifyYarnName(){
         Assert.assertTrue(iselementVisible(yarnName));
-        sendKeys(yarnName, "Test");
+        sendKeys(yarnName, generateRandomAlphabet(4));
         LOG.Reporter("Entered yarn name in text field");
         return this;
     }

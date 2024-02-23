@@ -2087,7 +2087,7 @@ public class MP_Create_Product_Test extends SuiteSetup {
                 NavigateToCategoriesSection().
                 verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
                 verifyNittyGritty_AddMultipleYarn().verifyNittyGritty_AddYarnSuggestionPopUp().verifyIsAliasesNonMandatory();
-    }*/
+    }
 
     // 9 feb
 
@@ -2096,7 +2096,7 @@ public class MP_Create_Product_Test extends SuiteSetup {
     @Feature("Create Products")
     @Severity(CRITICAL)
     @Description("Verify Submit button is accessible or not ")
-    @Story("Verify Submit button is accessible or not ")
+    @Story("As a user I should able to verify Submit button is accessible or not ")
     public void testToVerifySubmitButtonAccessibility() {
         page = new LoginPage(getDriver());
         manage_products = new Manage_Products(getDriver());
@@ -2106,8 +2106,301 @@ public class MP_Create_Product_Test extends SuiteSetup {
                 verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
                 verifyNittyGritty_AddMultipleYarn().verifyNittyGritty_AddYarnSuggestionPopUp().verifySubmitButtonAccessibility();
 
+    }*/
+
+ /*   @Test(priority = 152, description = "GP_S2_Web_152")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify cross icon is accessible or not on the popup  ")
+    @Story("As a user I should able to verify cross icon is accessible or not on the popup ")
+    public void testToVerifyCrossIconAccessibility() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddMultipleYarn().verifyNittyGritty_AddYarnSuggestionPopUp().crossIconAccessibility();
+
     }
 
+    @Test(priority = 228, description = "GP_S2_Web_228")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify UI and text for ravelry photos")
+    @Story("As a user I should able to verify UI and text for ravelry photos ")
+    public void testToVerifyRavelryPhotosUIAndText() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().
+                NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().verifyNittyGritty_AddYarnOptions().
+                verifyEnterDataInGauge().verifyNittyGritty_SaveAndContinue().verifyAddAttributeButton().
+                verifyAddAttributeButton_SaveAndContinue().verifyLanguageSection().verifyLanguageSection_SaveAndContinue().
+                verifyGallerySection().uploadPhoto().photosTab_SaveAndContinue().verifyFileTabVisible().verifyFileTab_UploadPDF().
+                filesTab_SaveAndContinue().verifyDescriptiveTextTabVisible().DescriptiveText_SaveAndContinue().goToRavelryDetailsForm().checkDragPhotosRAVELRYDetail().verifyRavelryPhotosUIAndText();
+    }
+
+    @Test(priority = 230, description = "GP_S2_Web_230")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("verify user is able to remove photos")
+    @Story("As a user I should able to verify user is able to remove photos")
+    public void testToVerifyUserCanRemovePhotos() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().
+                NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().verifyNittyGritty_AddYarnOptions().
+                verifyEnterDataInGauge().verifyNittyGritty_SaveAndContinue().verifyAddAttributeButton().
+                verifyAddAttributeButton_SaveAndContinue().verifyLanguageSection().verifyLanguageSection_SaveAndContinue().
+                verifyGallerySection().uploadPhoto().photosTab_SaveAndContinue().verifyFileTabVisible().verifyFileTab_UploadPDF().
+                filesTab_SaveAndContinue().verifyDescriptiveTextTabVisible().DescriptiveText_SaveAndContinue().goToRavelryDetailsForm().checkDragPhotosRAVELRYDetail().verifyUserCanRemovePhotos();
+    }
+
+    @Test(priority = 231, description = "GP_S2_Web_231")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("verify user is able to access add photos (already removed using remove photos button) ")
+    @Story("As a user I should able to verify user is able to access add photos (already removed using remove photos button) ")
+    public void testToVerifyUserCanAccessAddPhotosPopup() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().
+                NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().verifyNittyGritty_AddYarnOptions().
+                verifyEnterDataInGauge().verifyNittyGritty_SaveAndContinue().verifyAddAttributeButton().
+                verifyAddAttributeButton_SaveAndContinue().verifyLanguageSection().verifyLanguageSection_SaveAndContinue().
+                verifyGallerySection().uploadPhoto().photosTab_SaveAndContinue().verifyFileTabVisible().verifyFileTab_UploadPDF().
+                filesTab_SaveAndContinue().verifyDescriptiveTextTabVisible().DescriptiveText_SaveAndContinue().goToRavelryDetailsForm().checkDragPhotosRAVELRYDetail().verifyUserCanAccessAddPhotosPopup();
+    }*/
+
+
+    // Need to add method for uploading multiple images for sequence
+
+  /*  @Test(priority = 232, description = "GP_S2_Web_232")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("verify user is able to access add photos (already removed using remove photos button) > add photos")
+    @Story("As a user I should able to verify user is able to access add photos (already removed using remove photos button) > add photos")
+    public void testToVerifyAddedPhotosSequence() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().
+                NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().verifyNittyGritty_AddYarnOptions().
+                verifyEnterDataInGauge().verifyNittyGritty_SaveAndContinue().verifyAddAttributeButton().
+                verifyAddAttributeButton_SaveAndContinue().verifyLanguageSection().verifyLanguageSection_SaveAndContinue().
+                verifyGallerySection().uploadPhoto().photosTab_SaveAndContinue().verifyFileTabVisible().verifyFileTab_UploadPDF().
+                filesTab_SaveAndContinue().verifyDescriptiveTextTabVisible().DescriptiveText_SaveAndContinue().goToRavelryDetailsForm().checkDragPhotosRAVELRYDetail().verifyUserCanAccessAddPhotosPopup();
+    }
+
+
+
+    @Test(priority = 99, description = "GP_S2_Web_99")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify Texture field is non mandatory or not ")
+    @Story("As a user I should able to verify Texture field is non mandatory or not ")
+    public void testToVerifyIsTextureFieldNonMandatory() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().
+                NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddMultipleYarn().verifyNittyGritty_AddYarnSuggestionPopUp().verifyIsTextureFieldNonMandatory();
+    }
+
+    @Test(priority = 101, description = "GP_S2_Web_201")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify Weight (grams) field is mandatory or not ")
+    @Story("As a user I should able to verify Weight (grams) field is mandatory or not ")
+    public void testToVerifyIsWeightFieldNonMandatory() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().
+                NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddMultipleYarn().verifyNittyGritty_AddYarnSuggestionPopUp().verifyIsWeightFieldNonMandatory();
+    }
+
+    // 19 feb
+
+
+    @Test(priority = 065, description = "GP_S2_Web_065")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify user is able to add yarn with same yarn name of same yarn company  ")
+    @Story("As a user I should able to verify user is able to add yarn with same yarn name of same yarn company  ")
+    public void testToVerifySameYarnName() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().
+                NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddMultipleYarn().verifyNittyGritty_AddYarnSuggestionPopUp().verifySameYarnName();
+    }
+
+    @Test(priority = 073, description = "GP_S2_Web_073")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify once user enter the data to the Brand field then cross icon must appear and accessible ")
+    @Story("As a user I should able to verify once user enter the data to the Brand field then cross icon must appear and accessible ")
+    public void testToVerifyCrossIconAppearsAndAccessibility() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().
+                NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddMultipleYarn().verifyNittyGritty_AddYarnSuggestionPopUp().verifyCrossIconAppearsAndAccessibility();
+    }
+    // A
+    @Test(priority = 153, description = "GP_S2_Web_153")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify if user add more than one yarn to the pattern than \"Does the pattern require both the yarns\" Field provided or not")
+    @Story("As a user I should able to add more than one yarn to the pattern than \"Does the pattern require both the yarns\" Field provided or not")
+    public void testToVerifyPatternRequireBothTheYarnsDD() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddYarnOptions().againAddYarnOptions();
+
+    }
+
+    // M
+
+    @Test(priority = 154, description = "GP_S2_Web_154")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify if user update the added yarns than does the pattern require both the yarns field updated with blank or not ")
+    @Story("As a user I should able to verify if user update the added yarns than does the pattern require both the yarns field updated with blank or not ")
+    public void testToVerifyUpdateYarn() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddYarnOptions().againAddYarnOptions().verifyUpdateYarn();
+
+    }
+
+    @Test(priority = 155, description = "GP_S2_Web_155")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify if user add two yarns in the Product than Field label Does the pattern require both the yarns have both keyword or not ")
+    @Story("As a user I should able to Verify if user add two yarns in the Product than Field label Does the pattern require both the yarns have both keyword or not ")
+    public void testToVerifyBothKeywordsInPatternLabel() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddYarnOptions().againAddYarnOptions().verifyBothKeywordsInPatternLabel();
+
+    }*/
+
+    @Test(priority = 156, description = "GP_S2_Web_156")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify if user add multiple yarns than count in the field label\"Does the pattern all 3 yarns\"  is dynamic or not ")
+    @Story("As a user I should able to Verify if user add multiple yarns than count in the field label\"Does the pattern all 3 yarns\"  is dynamic or not ")
+    public void testToVerifyDynamicYarnCount() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddYarnOptions().againAddYarnOptions().againAddAnotherYarnOptions().testToVerifyDynamicYarnCount();
+
+    }
+
+   /* @Test(priority = 157, description = "GP_S2_Web_157")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify \"Does the pattern require both the yarns\" field is accessible or not ")
+    @Story("As a user I should able to verify \"Does the pattern require both the yarns\" field is accessible or not  ")
+    public void testToVerifyPatternFieldAccessibility() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddYarnOptions().againAddYarnOptions().verifyPatternFieldAccessibility();
+
+    }
+
+    @Test(priority = 158, description = "GP_S2_Web_158")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify user is able to select the option from the dropdown or not ")
+    @Story("As a user I should able to Verify user is able to select the option from the dropdown or not ")
+    public void testToVerifyPatternDropdownSelection() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddYarnOptions().againAddYarnOptions().verifyPatternDropdownSelection();
+
+    }
+
+    @Test(priority = 161, description = "GP_S2_Web_161")
+    @JiraPolicy(logTicketReady = false)
+    @Feature("Create Products")
+    @Severity(CRITICAL)
+    @Description("Verify if user try to select the both options from the dropdown ")
+    @Story("As a user I should able to verify if user try to select the both options from the dropdown  ")
+    public void testToVerifyMultiplePatternOptionsSelection() {
+        page = new LoginPage(getDriver());
+        manage_products = new Manage_Products(getDriver());
+        page.verifyUserLoginWithFreshUser();
+        manage_products.gotoCreateProduct().clickOnKnitting().
+                verifyThatSaveAndContinueButton().NavigateToCategoriesSection().
+                verifyTwoCategoriesSelected().verifyNavigationOnNittyGritty().verifyNittyGritty_NeedleSizeDropDownOptions().
+                verifyNittyGritty_AddYarnOptions().againAddYarnOptions().verifyMultiplePatternOptionsSelection();
+
+    }*/
 
 
     // M End
